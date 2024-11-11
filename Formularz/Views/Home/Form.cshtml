@@ -1,0 +1,51 @@
+﻿@model Formularz.Models.Dane
+<form asp-action="Form" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Name">Imię: </label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Surname">Nazwisko: </label>
+        <input asp-for="Surname" />
+    </div>
+    <div>
+        <label asp-for="Email">Email: </label>
+        <input type="email" asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="Pwd">Hasło: </label>
+        <input type="password" asp-for="Pwd" />
+    </div>
+        <div>
+        <label asp-for="PwdConfirmed">Powtórz hasło: </label>
+        <input type="password" asp-for="PwdConfirmed" />
+    </div>
+        <div>
+        <label asp-for="PhoneNr">Numer telefonu: </label>
+        <input type="tel" asp-for="PhoneNr" />
+    </div>
+        <div>
+        <label asp-for="Age">Wiek: </label>
+        <input type="number" asp-for="Age" />
+    </div>
+        <div>
+        <label asp-for="City">Miasto: </label>
+        <select asp-for="City"
+                asp-items="Html.GetEnumSelectList<Dane.Cities>()">
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" />
+        <input type="button" onclick="clearForm()" value="Wyczyść" />
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        function clearForm() {
+            document.querySelector('form').reset();
+        }
+    </script>
+}
